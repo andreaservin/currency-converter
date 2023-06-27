@@ -3,8 +3,15 @@ import { TouchableOpacity, View, Text, TextInput, StyleSheet } from 'react-nativ
 import colors from '../constants/colors'
 
 const ConversionInput = ({ text, onButtonPress, ...props }) => {
+
+  const containerStyles = [styles.container]
+
+  if (props.editable === false) {
+    containerStyles.push(styles.containerDisabled)
+  }
+
   return (
-    <View style={styles.container}>
+    <View style={containerStyles}>
       <TouchableOpacity onPress={onButtonPress} style={styles.button}>
         <Text style={styles.buttonText}>{text}</Text>
       </TouchableOpacity>
@@ -21,10 +28,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexDirection: 'row'
   },
+  containerDisabled: {
+    backgroundColor: colors.offWhite
+  },
   button: {
     padding: 15,
+    backgroundColor: colors.white,
     borderRightColor: colors.border,
-    borderRightWidth: 1
+    borderRightWidth: 1,
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5
   },
   buttonText: {
     fontSize: 18,

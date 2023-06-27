@@ -22,6 +22,7 @@ const Home = () => {
         value="123"
         keyboardType='numeric'
         onButtonPress={() => alert('to do!')}
+        editable={false}
       />
     </View>
   )
